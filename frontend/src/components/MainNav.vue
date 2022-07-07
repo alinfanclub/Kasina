@@ -1,7 +1,9 @@
 <template>
   <div id="navContainer">
     <div>
-        <img src="../assets/icon/main-logo.png" alt="MainLogo">
+       <router-link to="/">
+         <img src="../assets/icon/main-logo.png" alt="MainLogo">
+       </router-link>
     </div>
     <ul>
         <li>WEB STORE</li>
@@ -31,16 +33,22 @@ export default {
 
 <style scoped lang="scss">
     #navContainer {
+        background-color: #fff;
         position: fixed;
         width: 120px;
         height: calc(100vh - 1px);
         border-right: 1px solid #212529;
+        z-index: 90;
         img {
-            width: 100%;
+            width: 120px;
+            transform: translateX(-120px);
             padding: 85px 15px 20px 15px;
             box-sizing: border-box;
         }
-
+        
+        li {
+            font-weight: 900;
+        }
         > ul {
                 font-size: 0.9rem;
             > li {

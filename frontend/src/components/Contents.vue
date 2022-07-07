@@ -1,5 +1,9 @@
 <template>
-    <router-view></router-view>
+    <div id="contentContainer">
+        <div>
+            <router-view></router-view>
+        </div>
+    </div>
 </template>
 
 <script>
@@ -9,5 +13,6 @@ export default {
 }
 </script>
 
-<style scoped>
+<style scoped lang="scss">
+
 </style>

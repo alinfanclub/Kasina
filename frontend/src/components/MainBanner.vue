@@ -1,8 +1,8 @@
 <template>
   <div id="bannerItem">
-    <div v-for="(banners, i) in this.$store.state.mainBanner" :key="i" >
+    <div v-for="(banners, i) in this.$store.state.mainList" :key="i" >
       <router-link :to="`/brand/${banners.id}`" :a = a>
-         <img :src='banners.image' alt="image">
+         <img :src="require(`../assets/banner/${banners.image}`)" alt="image">
         <div>
           <p>{{banners.name}}</p>
         </div>
@@ -16,17 +16,20 @@ export default {
     name : 'MainBanner',
     data(){
       return {
-        a : 0
+        a : 0,
       }
     },
     computed : {
-      
+      imageUrl() {
+        require(this.$store.state.mainList.image)
+        return this.imageUrl
+      }
     },
-  //   methods: {
-  //   randomList: function(rand){
-  //     return rand.sort(function(){return 0.5 - Math.random()});
-  //   }
-  // }
+    created() {
+      const main = this.$route.params.id
+      this.$store.dispatch('FETCH_MAIN', main)
+      this.$store.state.loading = false
+    }
 }
 </script>
 
@@ -38,6 +41,7 @@ export default {
     padding-top: 2%;
     max-width: 1400px;
     width: 100%;
+    margin: 0 auto;
     > div {
       width: 49%;
       position: relative;
@@ -70,6 +74,7 @@ export default {
         text-align: center;
         font-size: 3rem;
         color: #333;
+        font-weight: 700;
       }
     }
   }

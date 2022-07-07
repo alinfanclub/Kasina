@@ -48,6 +48,8 @@ export default {
         border-top: 1px solid #212529;
         padding: 0;
         font-size: 0.7rem;
+        background-color: #fff;
+        z-index: 80;
         > section {
             padding: 20px;
 

@@ -22,7 +22,7 @@ export default {
 <style lang="scss" scoped>
     #loginContainer {
         position: fixed;
-        top: 0;
+        top: 30px;
         right: 0;
         height: fit-content;
         z-index: 99;

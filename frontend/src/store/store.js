@@ -1,16 +1,23 @@
 import { createStore } from 'vuex'
 import HeaderData from '@/data/data'
-import mainBanner from '@/data/main-banner'
-import ItemData from '@/data/goods'
+import mutations from './mutations.js'
+import actions from './actions.js'
+import BrandNav from '@/data/brand_nav_data'
+import getters from './getters.js'
 const store = createStore({
   state(){
     return {
         HeaderData,
-        mainBanner,
-        list : [],
-        ItemData
+        BrandNav,
+        itemList : [],
+        mainList : [],
+        item : {},
+        detailList : []
     }
   },
+  mutations,
+  actions,
+  getters
 })
 
 export default store

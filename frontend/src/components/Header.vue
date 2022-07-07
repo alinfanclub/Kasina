@@ -22,17 +22,17 @@ export default {
 <style scoped>
     #headerContainer {
         background-color: #212529;
-        height: 1.8em;
-        line-height: 1.8em;
+        height: 1.8rem;
+        line-height: 1.8rem;
         position: fixed;
         top: 0;
         left: 0;
         z-index: 99;
     }
     #headerWrap .marquee {
-        animation: scroll-left 180s linear infinite;
-        height: 1.8em;
-        line-height: 1.8em;
+        animation: scroll-left 60s linear infinite;
+        height: 1.8rem;
+        line-height: 1.8rem;
         width: max-content;
         background-color: #212529;
     }

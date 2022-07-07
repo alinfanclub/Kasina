@@ -4,7 +4,7 @@
     <div id="mainContent">
       <main-nav></main-nav>
      <div>
-       <div>
+       <div id="contentArea">
         <login-area></login-area>
         <main-contents></main-contents>
       </div>
@@ -33,11 +33,16 @@ export default {
 </script>
 
 <style lang="scss">
+body, th, td, h1, h2, h3, h4, h5, h6, input, select, textarea, button {
+  color: #212529;
+    font-size: .78rem;
+    font-weight: normal;
+    line-height: 1.8;
+    font-family: 'Roboto';
+}
 * {
   margin : 0;
   padding: 0;
-  font-family: 'Roboto-Medium';
-  font-weight: 500 ;
   color: #212529;;
 }
 a {
@@ -63,31 +68,21 @@ li {
     width: 100%;
     display: flex;
     flex-direction: column;
-
     > div {
       margin: 1.8rem 0 0 120px;
-
-      > div {
-        width: 1300px;
-        margin: 0 auto;
-      }
     }
     
   }
 }
 
+#contentArea {
+  overflow: scroll;
+}
+
+
 ::selection {
   background-color: #de0000;
   color: #fff;
 }
-@font-face {
-  font-family: 'Roboto-Medium';
-  src: url(./fonts/Roboto-Medium.ttf);
-  font-weight: 500;
-}
-@font-face {
-  font-family: 'Roboto-Regular';
-  src: url(./fonts/Roboto-Regular.ttf);
-  font-weight: 300;
-}
+
 </style>
