@@ -10,6 +10,11 @@
             :modules="modules"
             :space-between="30"
             :pagination="{ clickable: true }"
+            :loop="true"
+            :autoplay="{
+            delay: 2500,
+            disableOnInteraction: false
+            }"
             >
                 <swiper-slide class="slide"  v-for=" detail in this.$store.state.detailList.image" :key="detail">
                     <img :src="require(`../assets/detail/${this.$store.state.detailList.id}/${detail.image_slide}`)" alt="">
@@ -27,10 +32,24 @@
                 <p>제조연월 :  정확한 제조연월은 배송 받으신 제품의 라벨을 참고하시기 바랍니다.</p>
 
             </div>
+            <div id="itemRelative">
+                <p id="itemRelativeHeader">Related</p>
+               <div>
+                 <div v-for="item in this.$store.state.detailList.realated_image" :key="item">
+                    <router-link to="/">
+                         <img :src="require(`../assets/detail/${item.id}/${item.image}`)" alt="">
+                    </router-link>
+                    <p>{{item.name}}</p>
+                 </div>
+               </div>
+            </div>
             <div id="itemDetails">
-                <details>
+                <details  @click="toggleSummaryEvent()">
                     <summary>
-                        Shipping
+                        <div>Shipping</div>
+                        <div id="summary">
+                            <img src="../assets/icon/309084_plus_icon.png" alt="" :class="{toggle_summary : toggleSummary == false, toggle_s : toggleSummary == true}">
+                        </div>
                     </summary>
                     <ul>
                         <li>
@@ -44,20 +63,59 @@
                         </li>
                     </ul>
                 </details>
-                <details>
+                <details @click="toggleSummaryEvent2()">
                   <summary>
-                     Return
+                     <div>Return</div>
+                     <div id="summary">
+                        <img src="../assets/icon/309084_plus_icon.png" alt="" :class="{toggle_summary : toggleSummary2 == false, toggle_s : toggleSummary2 == true}">
+                     </div>
                   </summary>
+                  <ul>
+                    <li>
+                        - 상품 택(tag)제거 또는 개봉으로 상품 가치 훼손 시에는 상품수령후 7일 이내라도 교환 및 반품이 불가능합니다.
+                    </li>
+                    <li>
+                        - 고객 변심에 의한 교환, 반품은 고객께서 배송비를 부담하셔야 합니다. (제품의 하자,배송오류는 제외)
+                    </li>
+                    <li>
+                        - 일부 상품은 신모델 출시, 부품가격 변동 등 제조사 사정으로 가격이 변동될 수 있습니다.
+                    </li>
+                    <li>
+                        - 신발의 경우, 실외에서 착화하였거나 사용흔적이 있는 경우에는 교환/반품 기간내라도 교환 및 반품이 불가능 합니다.
+                    </li>
+                    <li>
+                        - 제품 및 본 상품의 박스 훼손, 분실 등으로 인한 상품 가치 훼손 시 교환 및 반품이 불가능 하오니, 양해 바랍니다.
+                    </li>
+                  </ul>
                 </details>
-                <details>
+                <details @click="toggleSummaryEvent3()">
                     <summary>
-                        Refund
+                        <div>Refund</div>
+                        <div id="summary">
+                            <img src="../assets/icon/309084_plus_icon.png" alt="" :class="{toggle_summary : toggleSummary3 == false, toggle_s : toggleSummary3 == true}">
+                        </div>
                     </summary>
+                    <ul>
+                        <li>
+                            - 상품 청약철회 가능기간은 상품 수령일로 부터 7일 이내 입니다.
+                        </li>
+                    </ul>
                 </details>
-                <details>
-                    <summary>
-                        AS
+                <details @click="toggleSummaryEvent4()">
+                    <summary >
+                        <div>AS</div>
+                        <div id="summary">
+                            <img src="../assets/icon/309084_plus_icon.png" alt="" :class="{toggle_summary : toggleSummary4 == false, toggle_s : toggleSummary4 == true}">
+                        </div>
                     </summary>
+                    <ul>
+                        <li>
+                            - 소비자분쟁해결 기준(공정거래위원회 고시)에 따라 피해를 보상받을 수 있습니다.
+                        </li>
+                        <li>
+                            - A/S는 판매자에게 문의하시기 바랍니다.
+                        </li>
+                    </ul>
                 </details>
             </div>
           </div>
@@ -67,11 +125,13 @@
 <script>
 import brandNavVue from './BrandNav.vue'
 import CategoriNavVue from './CategoriNav.vue'
-  import { defineComponent } from 'vue'
-  import { Pagination } from 'swiper'
-  import { Swiper, SwiperSlide } from 'swiper/vue'
-  import 'swiper/css'
-  import 'swiper/css/pagination'
+import { defineComponent } from 'vue'
+import { Pagination, Autoplay } from 'swiper'
+import { Swiper, SwiperSlide  } from 'swiper/vue'
+import 'swiper/css'
+import 'swiper/css/pagination'
+
+
 export default defineComponent( {
     name : 'GoodsVue', 
     data(){
@@ -89,7 +149,12 @@ export default defineComponent( {
                     nextEl: '.swiper-button-next',
                     prevEl: '.swiper-button-prev'
                 }
-            }   
+            },
+            toggleSummary : true, 
+            toggleSummary2 : true, 
+            toggleSummary3 : true, 
+            toggleSummary4 : true, 
+
         }
     },
     created() {
@@ -108,13 +173,27 @@ export default defineComponent( {
         showSale : function(){
         this.saleItem = !this.saleItem 
         },
+
+        toggleSummaryEvent: function() {
+            this.toggleSummary = !this.toggleSummary
+        },
+        toggleSummaryEvent2: function() {
+            this.toggleSummary2 = !this.toggleSummary2
+        },
+        toggleSummaryEvent3: function() {
+            this.toggleSummary3 = !this.toggleSummary3
+        },
+        toggleSummaryEvent4: function() {
+            this.toggleSummary4 = !this.toggleSummary4
+        },
     },
    setup() {
       return {
-        modules: [Pagination]
+        modules: [Pagination, Autoplay]
       }
     }
 })
+
 </script>
 
 <style lang="scss" scoped>
@@ -151,60 +230,125 @@ export default defineComponent( {
                 margin-left: 300px;
                 margin-top: 140px;
 
-
-                // > .image-area {
-                //     display: flex;
-                //     flex-wrap: wrap;
-                //     justify-content: center;
-                //     // width: fit-content;
-                //     margin : 0 auto;
-
-                //    > div {
-                //      > div {
-
-                //         > div {
-                //             height: 250px;
-                //             background-color : #fff ;
-                //             padding-top: 20px;
-                //             p {
-                //                 &:nth-child(1) {
-                //                     padding-bottom: 5px;
-                //                 }
-                //                 padding-bottom: 10px;
-                //                 font-size: 0.78rem;
-                //             }
-                //         }
-                //     }
-                //    }
-                // }
-
             }
 
-            // img {
-            //     width: 370px;
-            //     background-color: #e4e4e4;
-            //     margin-right: 20px;
-            // }
 
             #expended {
                 width: 700px;
-
                 img {
                     width: 100%;
                       background-color: #e4e4e4;
+                      margin-bottom: 50px;
+
+                      &:nth-of-type(1) {
+                        margin-top: 50px;
+                      }
                 }
             }
         }
 
         #itemLabel {
             width: 700px;
-            border-top: 1px solid #000;
-            border-bottom: 1px solid #000;
+            border-top: 1px solid #dbdbdb;
+            border-bottom: 1px solid #dbdbdb;
+            margin: 50px 0 0 0;
+
+            p {
+                margin : 8px 0;
+                padding:  0 10px;
+                color: #666;
+            }
         }
 
         #itemDetails {
             width: 700px;
-        }
-    }   
+            padding-bottom: 200px;  
+            details {
+            
 
+                ul {
+                    padding: 20px 0;
+
+                    li {
+                        padding: .7em .5em;
+                        word-break: break-all;
+                    }
+                }
+                summary {
+                    display: flex;
+                    align-items: center;padding: 10px 10px;
+                    justify-content: space-between;
+
+                    &::marker{
+                        font-size:20px;
+                    }
+
+                    div {
+                        &:nth-child(2) {
+                            height: 12px;
+                            display: flex;
+                            align-items: center;
+                        }
+                        img {
+                            width: 12px;
+                            height: 12px;  
+                            display: flex;
+                            align-items: center;
+                        }
+                    }
+                }
+            }
+            .toggle_summary {
+                transform: rotate(315deg);
+                transition: .5s;
+            }
+            .toggle_s {
+                transform: rotate(-0deg);
+                transition: .5s;
+            }
+            details {
+                border-bottom: 1px solid #dbdbdb;
+
+                &:nth-of-type(1) {
+                    border-top: 1px solid #dbdbdb;
+                }
+            }
+        }
+    }  
+
+    #itemRelative {
+        padding: 100px 0;
+        padding-bottom: 200px;
+        max-width: 700px;
+        widows: 100%;
+        display: flex;
+        justify-content: space-between;
+        position: relative;
+
+        #itemRelativeHeader {
+            top: 0;
+            left: 0;
+        }
+        
+       > div {
+        width: 90%;
+        display: flex;
+        justify-content: space-around;
+
+         > div {
+            text-align: left;
+            width: 240px;
+
+            img {
+                width: 100%;
+                background-color: #dbdbdb;
+            }
+
+            p {
+                margin-top: 20px;
+            }
+        
+        }
+       }
+    }
 </style>

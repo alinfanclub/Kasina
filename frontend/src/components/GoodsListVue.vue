@@ -32,7 +32,7 @@
                 <div v-for="item in this.$store.state.itemList.items" :key="item">
                    <div>
                         <router-link :to="`/goods/detail/${item.detail}`">
-                             <img :src="require(`../assets/goods/${item.id}/${item.image}`)" alt="image">
+                             <img :src="require(`../assets/goods/${item.id}/${item.image}`)" :alt="`${item.name}`">
                         </router-link>
                     <div>
                         <p>{{item.brand}}</p>

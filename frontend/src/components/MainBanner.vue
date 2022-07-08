@@ -2,7 +2,7 @@
   <div id="bannerItem">
     <div v-for="(banners, i) in this.$store.state.mainList" :key="i" >
       <router-link :to="`/brand/${banners.id}`" :a = a>
-         <img :src="require(`../assets/banner/${banners.image}`)" alt="image">
+         <img :src="require(`../assets/banner/${banners.image}`)" :alt="`${banners.id}`">
         <div>
           <p>{{banners.name}}</p>
         </div>
