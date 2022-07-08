@@ -283,6 +283,10 @@ export default defineComponent( {
                         font-size:20px;
                     }
 
+                    &::-webkit-details-marker {
+                        display:none;
+                    }
+
                     div {
                         &:nth-child(2) {
                             height: 12px;
