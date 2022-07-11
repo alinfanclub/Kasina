@@ -9,5 +9,5 @@ export default {
 
     SET_DETAIL(state, data) {
         state.detailList = data
-    }
+    },
 }

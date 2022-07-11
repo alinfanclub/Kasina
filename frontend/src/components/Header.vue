@@ -24,10 +24,6 @@ export default {
         background-color: #212529;
         height: 1.8rem;
         line-height: 1.8rem;
-        position: fixed;
-        top: 0;
-        left: 0;
-        z-index: 99;
     }
     #headerWrap .marquee {
         animation: scroll-left 60s linear infinite;

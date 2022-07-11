@@ -236,4 +236,66 @@ export default {
             color : #de0000
         }
     }   
+
+    @media (min-width:320px) and (max-width:768px) {
+
+        #goodsListContainer {
+            #subNav {
+                display: none;
+            }
+
+            > div {
+                &:nth-child(1) {
+                    width: 300px;
+                    display: flex;
+                    position: fixed;
+                }
+                &:nth-child(2) {
+                    // background-color: aquamarine;
+                    width: 95%;
+                    margin: 0 auto;
+                    margin-top: 3rem;
+
+                    > .image-area {
+                        display: flex;
+                        flex-wrap: wrap;
+                        justify-content: center;
+                        // width: fit-content;
+                        justify-content: space-around;
+                        margin : 0 auto;
+
+                    > div {
+                        width: 48%;
+                        > div {
+
+                            > div {
+                                height: 200px;
+                                background-color : #fff ;
+                                padding-top: 20px;
+                                p {
+                                    &:nth-child(1) {
+                                        padding-bottom: 5px;
+                                    }
+                                    padding-bottom: 10px;
+                                    font-size: 0.78rem;
+                                }
+                            }
+                        }
+                    }   
+                    }
+                }
+                img {
+                    width: 100%;
+                    background-color: #e4e4e4;
+                    margin-right: 20px;
+                }
+            }
+
+            .item-headers {
+                p {
+                    font-size: 20px;
+                }
+            }
+        }
+    }
 </style>

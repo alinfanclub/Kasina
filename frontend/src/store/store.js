@@ -12,12 +12,13 @@ const store = createStore({
         itemList : [],
         mainList : [],
         item : {},
-        detailList : []
+        detailList : [],
+        hamburgerActive : false,
     }
   },
   mutations,
   actions,
-  getters
+  getters,
 })
 
 export default store

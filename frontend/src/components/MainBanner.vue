@@ -3,8 +3,11 @@
     <div v-for="(banners, i) in this.$store.state.mainList" :key="i" >
       <router-link :to="`/brand/${banners.id}`" :a = a>
          <img :src="require(`../assets/banner/${banners.image}`)" :alt="`${banners.id}`">
-        <div>
+        <div id="BrandName">
           <p>{{banners.name}}</p>
+        </div>
+        <div id="mvBrandName">
+            <p>{{banners.name}}</p>
         </div>
       </router-link>
     </div>
@@ -42,6 +45,7 @@ export default {
     max-width: 1400px;
     width: 100%;
     margin: 0 auto;
+    
     > div {
       width: 49%;
       position: relative;
@@ -51,7 +55,7 @@ export default {
         padding: 1% 0;
       }
 
-       div {
+      #BrandName{
         position: absolute;
         top: 50%;
         left: 50%;
@@ -64,18 +68,50 @@ export default {
         &:hover {
           opacity: 1;
         }
+
+        p {
+          position: absolute;
+          top: 50%;
+          left: 50%;
+          transform: translate(-50%, -50%);
+          width: 100%;
+          text-align: center;
+          font-size: 3rem;
+          color: #333;
+          font-weight: 700;
+        }
       }
+
+    }
+    #mvBrandName {
       p {
-        position: absolute;
-        top: 50%;
-        left: 50%;
-        transform: translate(-50%, -50%);
-        width: 100%;
         text-align: center;
-        font-size: 3rem;
-        color: #333;
+        font-size: 1.5rem;
         font-weight: 700;
+        display: none;
       }
     }
   }
+
+    @media (min-width:320px) and (max-width:768px) {
+      #bannerItem {
+        display: block;
+
+        > div {
+          width: 100%;
+
+          #BrandName {
+            &:hover {
+              opacity: 0;
+            }
+          }
+        }
+
+        #mvBrandName {
+          p {
+            display: block;
+          }
+        }
+      }
+    }
 </style>

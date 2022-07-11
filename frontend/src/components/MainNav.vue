@@ -18,7 +18,7 @@
             <li class="high-light">SALE</li>
             <li>RESTOCK</li>
         </ul>
-        <li>REATURE</li>
+        <li>FEATURE</li>
         <li>STORES</li>
         <li>.WAV</li>
     </ul>
@@ -39,9 +39,10 @@ export default {
         height: calc(100vh - 1px);
         border-right: 1px solid #212529;
         z-index: 90;
+
         img {
             width: 120px;
-            transform: translateX(-120px);
+            // transform: translateX(-120px);
             padding: 85px 15px 20px 15px;
             box-sizing: border-box;
         }

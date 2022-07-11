@@ -355,4 +355,167 @@ export default defineComponent( {
         }
        }
     }
+
+    @media (min-width:320px) and (max-width:768px) {
+
+        .swiper {
+            width: 100%;
+            margin-left: 0;
+            .slide {
+                width: 100%;
+            }
+
+            img {
+                width: 100%;
+                background-color: #e4e4e4;
+            }
+
+            .swiper-pagination-bullet-active {
+                background-color: red;
+            }
+        }
+        #goodsListContainer {
+
+            #subNav {
+                display: none;
+            }
+
+            > div {
+                &:nth-child(1) {
+                    display: flex;
+                    position: fixed;
+                }
+                &:nth-child(2) {
+                    // background-color: aquamarine;
+                    width: 90%;
+                    margin: 0 auto;
+                    margin-top: 1.5rem;
+
+                }
+
+
+                #expended {
+                    width: 100%;
+                    img {
+                        width: 100%;
+                        background-color: #e4e4e4;
+                        margin-bottom: 50px;
+
+                        &:nth-of-type(1) {
+                            margin-top: 50px;
+                        }
+                    }
+                }
+            }
+            #itemLabel {
+            width: 100%;
+            border-top: 1px solid #dbdbdb;
+            border-bottom: 1px solid #dbdbdb;
+            margin: 50px 0 0 0;
+
+                p {
+                    margin : 8px 0;
+                    padding:  0 10px;
+                    color: #666;
+                }
+            }
+             #itemDetails {
+                width: 100%;
+                padding-bottom: 200px;  
+                details {
+                
+
+                    ul {
+                        padding: 20px 0;
+
+                        li {
+                            // padding: .7em .5em;
+                            word-break: break-all;
+                        }
+                    }
+                    summary {
+                        display: flex;
+                        align-items: center;padding: 10px 10px;
+                        justify-content: space-between;
+
+                        &::marker{
+                            font-size:20px;
+                        }
+
+                        &::-webkit-details-marker {
+                            display:none;
+                        }
+
+                        div {
+                            &:nth-child(2) {
+                                height: 12px;
+                                display: flex;
+                                align-items: center;
+                            }
+                            img {
+                                width: 12px;
+                                height: 12px;  
+                                display: flex;
+                                align-items: center;
+                            }
+                        }
+                    }
+                }
+                .toggle_summary {
+                    transform: rotate(315deg);
+                    transition: .5s;
+                }
+                .toggle_s {
+                    transform: rotate(-0deg);
+                    transition: .5s;
+                }
+                details {
+                    border-bottom: 1px solid #dbdbdb;
+
+                    &:nth-of-type(1) {
+                        border-top: 1px solid #dbdbdb;
+                    }
+                }
+            }
+
+              #itemRelative {
+                padding: 100px 0;
+                padding-bottom: 200px;
+                max-width: 700px;
+                display: block;
+                justify-content: space-between;
+                position: relative;
+
+                #itemRelativeHeader {
+                    top: 0;
+                    left: 0;
+                    margin-bottom: 20px;
+                }
+                
+            > div {
+                width: 100%;
+                display: flex;
+                justify-content: space-around;
+
+                > div {
+                    text-align: left;
+                    width: fit-content;
+                    width: 40%;
+
+                    img {
+                        width: 100%;
+                        background-color: #dbdbdb;
+                    }
+
+                    p {
+                        margin-top: 20px;
+                    }
+                
+                }
+            }
+            }
+        }
+        
+  
+    }
 </style>
