@@ -32,7 +32,7 @@ export default {
             margin: 8px 10px 0 0;
 
             > li {
-                font-family: 'Roboto-Regular';
+                font-family: 'Roboto';
                 padding-left: 10px;
                 font-size: 0.78rem;
             }

@@ -5,11 +5,11 @@
     </div>
     <div>
         <router-link to="/">
-            <img src="../assets/icon/main-logo.png" alt="">
+            <img src="../../assets/icon/main-logo.png" alt="">
         </router-link>
     </div>
     <div>
-        <img src="../assets/icon/menu-icon.png" alt="" @click="hamburgerToggle()">
+        <img src="../../assets/icon/menu-icon.png" alt="" @click="hamburgerToggle()">
     </div>
   </div>
 </template>
