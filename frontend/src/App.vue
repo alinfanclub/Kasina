@@ -52,10 +52,10 @@
 <script>
 import HeaderVue from './components/Header.vue'
 import MainNav from './components/MainNav.vue'
-import MainContents from './components/Contents.vue'
+import MainContents from './Contents.vue'
 import LoginArea from './components/LoginArea.vue'
 import FooterVue from './components/Footer.vue'
-import MobileNav from './components/MobileNav.vue'
+import MobileNav from './components/mobile/MobileNav.vue'
 import CategoriNavVue from './components/CategoriNav.vue'
 import BrandNavVue from './components/BrandNav.vue'
 export default {
@@ -224,9 +224,7 @@ li {
   }
 }
 
-#contentArea {
-  overflow: scroll;
-}
+
 
 
 ::selection {

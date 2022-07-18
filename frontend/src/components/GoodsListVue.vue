@@ -5,10 +5,6 @@
             <categori-nav-vue></categori-nav-vue>
        </div>
         <div>
-            <!-- <div class="item-header">
-                <button>Advanced Search +</button>
-                <h2>"{{this.$store.state.itemList.page_h}}"</h2>
-            </div> -->
             <div class="item-headers">
                 <p>{{this.$store.state.itemList.page_h}}</p>
                 <ul v-if="this.$store.state.itemList.categori == true">

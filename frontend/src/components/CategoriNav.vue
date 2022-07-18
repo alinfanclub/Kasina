@@ -55,7 +55,6 @@ export default {
             &:nth-child(2) {
                 height: 84vh;
                 margin-top: 180px;
-                overflow: scroll;
             }
         }
     }
