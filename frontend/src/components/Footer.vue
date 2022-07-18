@@ -98,4 +98,40 @@ export default {
           }
         }
     }
+
+    @media (min-width:250px) and (max-width:1200px) {
+        #footerContainer {
+
+            > section {
+                &:nth-child(1) {
+                    display: block;
+                    padding: 0;
+                    > div {
+                        width: 100%;
+                        &:nth-child(1) {
+                            border-bottom: 1px solid #212529;
+                            box-sizing: border-box;
+                            padding: 20px;
+                            > div {
+                                margin: 0 auto;
+                                color: #fff;
+                                background-color: #212529;
+                            }
+                            p {
+                                text-align: center;
+                            }
+                            ul {
+                               text-align: center;
+                            }
+                        }
+                        &:nth-child(2) {
+                            width: 100%;
+                            box-sizing: border-box;
+                            padding: 20px;
+                        }
+                    }
+                }
+            }
+        }
+    }
 </style>

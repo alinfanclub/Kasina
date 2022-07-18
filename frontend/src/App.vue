@@ -50,6 +50,7 @@
 </template>
 
 <script>
+    
 import HeaderVue from './components/Header.vue'
 import MainNav from './components/MainNav.vue'
 import MainContents from './components/Contents.vue'
@@ -235,7 +236,7 @@ li {
 }
 
 
-    @media (min-width:320px) and (max-width:768px) {
+    @media (min-width:250px) and (max-width:1200px) {
       #WholeCotainer  {
         #headerVue {
         background-color: rgba(255, 255, 255, 0.5);

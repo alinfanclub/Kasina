@@ -23,7 +23,7 @@
             <div id="expended" v-for=" detail in this.$store.state.detailList.image" :key="detail">
                 <img :src="require(`../assets/detail/${this.$store.state.detailList.id}/${detail.image_slide}`)" alt="">
             </div>
-
+            <input type="button" id="naverPayBtn" value="네이버페이 결제 버튼">
             <div id="itemLabel">
                 <p>소재  : {{this.$store.state.detailList.material}}</p>
                 <p>색상  : {{this.$store.state.detailList.color}}</p>
@@ -131,6 +131,7 @@ import { Swiper, SwiperSlide  } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
 
+    
 
 export default defineComponent( {
     name : 'GoodsVue', 
@@ -162,6 +163,9 @@ export default defineComponent( {
       const brand = this.$route.params.id
       this.$store.dispatch('FETCH_DETAIL', brand)
       console.log(this.$store.state.detailList.material);
+
+
+  
     },
     components : {
         brandNavVue,
@@ -185,7 +189,7 @@ export default defineComponent( {
         },
         toggleSummaryEvent4: function() {
             this.toggleSummary4 = !this.toggleSummary4
-        },
+        },r
     },
    setup() {
       return {
@@ -193,6 +197,11 @@ export default defineComponent( {
       }
     }
 })
+
+
+
+
+
 
 </script>
 
@@ -356,7 +365,7 @@ export default defineComponent( {
        }
     }
 
-    @media (min-width:320px) and (max-width:768px) {
+    @media (min-width:250px) and (max-width:1200px) {
 
         .swiper {
             width: 100%;

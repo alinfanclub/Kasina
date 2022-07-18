@@ -93,7 +93,7 @@ export default {
     }
   }
 
-    @media (min-width:320px) and (max-width:768px) {
+    @media (min-width:250px) and (max-width:1200px) {
       #bannerItem {
         display: block;
 
