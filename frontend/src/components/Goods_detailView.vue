@@ -189,7 +189,7 @@ export default defineComponent( {
         },
         toggleSummaryEvent4: function() {
             this.toggleSummary4 = !this.toggleSummary4
-        },r
+        },
     },
    setup() {
       return {

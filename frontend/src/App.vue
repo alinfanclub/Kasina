@@ -99,6 +99,7 @@ a {
 li {
   list-style: none;
 }
+
 #WholeCotainer {
   border-bottom: 1px solid #212529;
   margin-bottom: 1px;
