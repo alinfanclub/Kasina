@@ -76,6 +76,9 @@ export default {
       this.$store.state.hamburgerActive = !this.$store.state.hamburgerActive
     }
   },
+  created () {
+    console.log(process.env.VUE_APP_TITLE);
+  }
 }
 </script>
 
