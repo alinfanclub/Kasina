@@ -1,10 +1,11 @@
 import { fectchMainList, fectchItemList, fectchDetail } from '@/api/api'
-
+import store from './store';
 export default{
     FETCH_MAIN(context) {
         fectchMainList()
         .then(response => {
             context.commit('SET_MAIN', response.data);
+            store.state.Loading = false;
         })
         .catch(error => {
             console.log(error)

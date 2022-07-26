@@ -7,9 +7,12 @@
 </template>
 
 <script>
+import {} from "@/api/api"
 export default {
     name : 'MainContents',
-   
+   methods: {
+
+   },
 }
 </script>
 

@@ -14,6 +14,7 @@ const store = createStore({
         item : {},
         detailList : [],
         hamburgerActive : false,
+        Loading: false,
     }
   },
   mutations,

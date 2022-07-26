@@ -1,0 +1,20 @@
+import Vue from "vue"
+
+Vue.directive("lazy", {
+  inserted: (el, { value }) => {
+    const observer = new IntersectionObserver((entries, observer) => {
+      entries.forEach(entry => {
+        if (entry.isIntersecting) {
+          observer.unobserve(entry.target)
+          let image = new Image()
+          image.src = value
+          image.onload = () => {
+            entry.target.src = value
+          }
+          image = null
+        }
+      })
+    })
+    observer.observe(el)
+  }
+})

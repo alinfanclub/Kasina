@@ -2,7 +2,7 @@
   <div id="navContainer">
     <div>
        <router-link to="/">
-         <img src="../assets/icon/main-logo.png" alt="MainLogo">
+         <img src="../../assets/icon/main-logo.png" alt="MainLogo">
        </router-link>
     </div>
     <ul>

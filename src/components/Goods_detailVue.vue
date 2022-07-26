@@ -17,11 +17,12 @@
             }"
             >
                 <swiper-slide class="slide"  v-for=" detail in this.$store.state.detailList.image" :key="detail">
-                    <img :src="require(`../assets/detail/${this.$store.state.detailList.id}/${detail.image_slide}`)" alt="">
+                    <lazy-image-vue :src="require(`../assets/detail/${this.$store.state.detailList.id}/${detail.image_slide}`)" size="small"></lazy-image-vue>
                 </swiper-slide>
             </swiper>
             <div id="expended" v-for=" detail in this.$store.state.detailList.image" :key="detail">
-                <img :src="require(`../assets/detail/${this.$store.state.detailList.id}/${detail.image_slide}`)" alt="">
+                <!-- <img :src="require(`../assets/detail/${this.$store.state.detailList.id}/${detail.image_slide}`)" alt=""> -->
+                <lazy-image-vue :src="require(`../assets/detail/${this.$store.state.detailList.id}/${detail.image_slide}`)"></lazy-image-vue>
             </div>
             <input type="button" id="naverPayBtn" value="네이버페이 결제 버튼">
             <div id="itemLabel">
@@ -123,14 +124,14 @@
 </template>
 
 <script>
-import brandNavVue from './BrandNav.vue'
-import CategoriNavVue from './CategoriNav.vue'
+import brandNavVue from './common/BrandNav.vue'
+import CategoriNavVue from './common/CategoriNav.vue'
 import { defineComponent } from 'vue'
 import { Pagination, Autoplay } from 'swiper'
 import { Swiper, SwiperSlide  } from 'swiper/vue'
 import 'swiper/css'
 import 'swiper/css/pagination'
-
+import LazyImageVue from '@/LazyImage.vue'
     
 
 export default defineComponent( {
@@ -159,19 +160,15 @@ export default defineComponent( {
         }
     },
     created() {
-      console.log(this.$store.state.detailList.image);
       const brand = this.$route.params.id
       this.$store.dispatch('FETCH_DETAIL', brand)
-      console.log(this.$store.state.detailList.material);
-
-
-  
     },
     components : {
         brandNavVue,
         CategoriNavVue,
         Swiper,
-        SwiperSlide
+        SwiperSlide,
+        LazyImageVue
     },
    methods : {
         showSale : function(){

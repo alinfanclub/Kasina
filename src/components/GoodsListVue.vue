@@ -4,7 +4,8 @@
             <brand-nav-vue></brand-nav-vue>
             <categori-nav-vue></categori-nav-vue>
        </div>
-        <div>
+        <loading-spinner-vue v-if="isLoading"></loading-spinner-vue>
+        <div v-else>
             <div class="item-headers">
                 <p>{{this.$store.state.itemList.page_h}}</p>
                 <ul v-if="this.$store.state.itemList.categori == true">
@@ -28,7 +29,9 @@
                 <div v-for="item in this.$store.state.itemList.items" :key="item">
                    <div>
                         <router-link :to="`/goods/detail/${item.detail}`">
-                             <img :src="require(`../assets/goods/${item.id}/${item.image}`)" :alt="`${item.name}`">
+                             <!-- <img :src="require(`../assets/goods/${item.id}/${item.image}`)" :alt="`${item.name}`"> -->
+                            <!-- <img v-lazy.small="require(`../assets/goods/${item.id}/${item.image}`)" :alt="`${item.name}`"> -->
+                            <lazy-image :src="require(`../assets/goods/${item.id}/${item.image}`)" size="small"></lazy-image>
                         </router-link>
                     <div>
                         <p>{{item.brand}}</p>
@@ -42,7 +45,7 @@
            <div class="image-area" v-if="saleItem == true" >
                 <div v-for="item in this.$store.state.itemList.items" :key="item">
                     <div v-if="item.sale == true">
-                        <img :src="require(`../assets/goods/${item.id}/${item.image}`)" alt="image">
+                        <lazy-image :src="require(`../assets/goods/${item.id}/${item.image}`)" size="small"></lazy-image>
                         <div>
                             <p>{{item.brand}}</p>
                             <p>{{item.name}}</p>
@@ -60,34 +63,44 @@
 </template>
 
 <script>
-import brandNavVue from './BrandNav.vue'
-import CategoriNavVue from './CategoriNav.vue'
+import brandNavVue from './common/BrandNav.vue'
+import CategoriNavVue from './common/CategoriNav.vue'
 // import { mapGetters } from 'vuex'
 // import {useRoute} from 'vue-router'
+import LoadingSpinnerVue from './LoadingSpinner.vue'
+import lazyImage from '../LazyImage.vue'
 export default {
     name : 'GoodsVue', 
     data(){
         return {
-            saleItem : false
+            saleItem : false,
+            isLoading : true
         }
     },
+    methods: {
+         async fetchGoodsList() {
+            try {
+                const brand = this.$route.params.id
+                await this.$store.dispatch('FETCH_BRANDS', brand);
+            } catch (error) {
+                console.log(error);
+            }
+        },
+        showSale : function(){
+            this.saleItem = !this.saleItem 
+        },
+    },
     created() {
-      const brand = this.$route.params.id
-      this.$store.dispatch('FETCH_BRANDS', brand)
-    //   console.log(this.$store.state.itemList[0].id);
+        this.isLoading = true
+        this.fetchGoodsList();
+        this.isLoading = false
     },
     components : {
         brandNavVue,
-        CategoriNavVue
+        CategoriNavVue,
+        LoadingSpinnerVue,
+        lazyImage
     },
-   methods : {
-    // priceSort(){
-    //     this.$store.state.itemList.items.price.toNumber().sort()
-    // }
-    showSale : function(){
-        this.saleItem = !this.saleItem 
-    },
-}
 }
 </script>
 

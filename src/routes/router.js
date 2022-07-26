@@ -1,9 +1,9 @@
 import { createWebHistory, createRouter } from "vue-router";
 import  MainBanner from '../components/MainBanner.vue'
 import Goods from '../components/GoodsListVue.vue'
-import GoodsDetail from '../components/Goods_detailView.vue'
-import Login from "../views/LoginView.vue"
-import SignUp from "../views/SignUpView.vue"
+import GoodsDetail from '../components/Goods_detailVue.vue'
+import Login from "../components/LoginVue.vue"
+import SignUp from "../components/SignUpVue.vue"
 
 const routes = [
   {

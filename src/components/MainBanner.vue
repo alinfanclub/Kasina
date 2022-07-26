@@ -2,7 +2,8 @@
   <div id="bannerItem">
     <div v-for="(banners, i) in this.$store.state.mainList" :key="i" >
       <router-link :to="`/brand/${banners.id}`" :a = a>
-         <img :src="require(`../assets/banner/${banners.image}`)" :alt="`${banners.id}`">
+         <!-- <img :src="require(`../assets/banner/${banners.image}`)" :alt="`${banners.id}`"> -->
+         <lazy-image :src="require(`../assets/banner/${banners.image}`)"></lazy-image>
         <div id="BrandName">
           <p>{{banners.name}}</p>
         </div>
@@ -15,7 +16,9 @@
 </template>
 
 <script>
+import LazyImage from '@/LazyImage.vue'
 export default {
+  components: { LazyImage },
     name : 'MainBanner',
     data(){
       return {
@@ -31,7 +34,6 @@ export default {
     created() {
       const main = this.$route.params.id
       this.$store.dispatch('FETCH_MAIN', main)
-      this.$store.state.loading = false
     }
 }
 </script>

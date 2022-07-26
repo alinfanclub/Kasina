@@ -18,9 +18,9 @@
         <button>아이디 찾기</button>
         <button>비밀번호 찾기</button>
     </div>
-    <dir>
+    <div>
         <button @click=" logInwithGoogle">Login With Google</button>
-    </dir>
+    </div>
   </div>
 </template>
 
